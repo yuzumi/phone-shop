@@ -20,13 +20,8 @@ const Header = ({ appName }) => (
         </MDBNavbarBrand>
         <MDBNavbarNav className="flex-row" right>
           <MDBNavItem>
-            <MDBNavLink className="waves-effect waves-light" to="shopping-cart">
+            <MDBNavLink className="waves-effect waves-light" to="/shopping-cart">
               <MDBIcon icon="shopping-cart" />
-            </MDBNavLink>
-          </MDBNavItem>
-          <MDBNavItem className="ml-4">
-            <MDBNavLink className="waves-effect waves-light" to="admin-panel">
-              <MDBIcon icon="user" />
             </MDBNavLink>
           </MDBNavItem>
         </MDBNavbarNav>
