@@ -10,7 +10,7 @@ const Template = ({ children }) => {
   return (
     <>
       <Header appName={appName} />
-      <main className="main">
+      <main className="main py-5">
         <MDBContainer>
           {children}
         </MDBContainer>
