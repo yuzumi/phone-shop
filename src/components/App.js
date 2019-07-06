@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Spinner from 'components/shared/Spinner';
 import Template from 'components/layout/Template';
 import RouterOutlet from 'components/services/RouterOutlet';
 
@@ -9,7 +10,8 @@ const App = () => (
   <div className="app">
     <Template>
       <RouterOutlet {...{
-          routes
+          routes,
+          fallback: <Spinner />
         }} 
       />
     </Template>
