@@ -11,10 +11,10 @@ const routes = [
     exact: true,
     render: props => <HomePage {...props} />
   }, {
-    path: '/cart',
+    path: '/shopping-cart',
     render: props => <CartPage {...props} />
   }, {
-    path: '/product/:id',
+    path: '/phone/:id',
     render: props => <ProductPage {...props} />
   }, {
     path: '*',
