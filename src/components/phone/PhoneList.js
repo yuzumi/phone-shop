@@ -1,37 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { MDBRow, MDBCol } from "mdbreact";
 import { connect } from 'react-redux';
-import { operations, selectors } from 're-ducks/modules/phones';
+import { selectors } from 're-ducks/modules/phones';
+import { actions } from 're-ducks/modules/cart';
 
 import Spinner from 'components/shared/Spinner';
 import PhoneListItem from 'components/phone/PhoneListItem';
 
-class PhoneList extends Component {
-  componentDidMount() {
-    this.props.fetchPhones();
-  }
-
-  renderPhoneItem = phone => (
+const PhoneList = ({ items, isLoading, addToCart }) => {
+  const renderPhoneItem = phone => (
     <MDBCol className="pt-3" lg="4" md="6" sm="12" key={phone.id}>
-      <PhoneListItem phone={phone} />
+      <PhoneListItem 
+        {...{
+          phone,
+          addToCart: () => addToCart(phone),
+        }} 
+      />
     </MDBCol>
   )
 
-  render() {
-    const { items, isLoading } = this.props;
-
-    return (
-      <>
-        {isLoading ? (
-          <Spinner />
-        ) : (
+  return (
+    <>
+      {isLoading ? (
+        <Spinner />
+      ) : (
           <MDBRow className="pb-3">
-            {items.map(this.renderPhoneItem)}
+            {items.map(renderPhoneItem)}
           </MDBRow>
         )}
-      </>
-    );
-  }
+    </>
+  );
 }
 
 const mapStateToProps = state => ({
@@ -40,5 +38,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchPhones: operations.fetchPhones }
+  { addToCart: actions.addToCart }
 )(PhoneList);
