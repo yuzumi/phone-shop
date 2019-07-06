@@ -3,7 +3,7 @@ import React, { lazy } from 'react';
 const HomePage = lazy(() => import('components/pages/HomePage'));
 const CartPage = lazy(() => import('components/pages/CartPage'));
 const NoMatch = lazy(() => import('components/pages/NoMatch'));
-const ProductPage = lazy(() => import('components/pages/ProductPage'));
+const PhonePage = lazy(() => import('components/pages/PhonePage'));
 
 const routes = [
   {
@@ -15,7 +15,7 @@ const routes = [
     render: props => <CartPage {...props} />
   }, {
     path: '/phone/:id',
-    render: props => <ProductPage {...props} />
+    render: props => <PhonePage {...props} />
   }, {
     path: '*',
     render: props => <NoMatch {...props} />
