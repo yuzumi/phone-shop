@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardFooter, MDBCardImage, MDBCardText, MDBIcon } from 'mdbreact';
 
-const PhoneListItem = ({ phone }) => {
+const PhoneListItem = ({ phone, addToCart }) => {
   const to = `/phone/${phone.id}`;
 
   return (
@@ -26,7 +26,7 @@ const PhoneListItem = ({ phone }) => {
           <Link className="btn btn-primary btn-sm ml-auto" to={to}>
             <MDBIcon icon="info" />
           </Link>
-          <MDBBtn size="sm" color="success">
+          <MDBBtn size="sm" color="success" onClick={addToCart}>
             <MDBIcon icon="plus" />
           </MDBBtn>
         </div>
