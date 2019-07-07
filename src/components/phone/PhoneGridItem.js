@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardFooter, MDBCardImage, MDBCardText, MDBIcon } from 'mdbreact';
 
-const PhoneListItem = ({ phone, addToCart }) => {
+const PhoneGridItem = ({ phone, addToCart }) => {
   const to = `/phone/${phone.id}`;
 
   return (
@@ -35,4 +35,4 @@ const PhoneListItem = ({ phone, addToCart }) => {
   );
 };
 
-export default PhoneListItem;
+export default PhoneGridItem;

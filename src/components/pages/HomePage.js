@@ -1,14 +1,14 @@
 import React from 'react';
 import { MDBRow, MDBCol } from 'mdbreact';
 
-import PhoneList from 'components/phone/PhoneList';
+import PhoneGrid from 'components/phone/PhoneGrid';
 
 const HomePage = () => (
   <section className="page home">
     <MDBRow>
       <MDBCol md="3"></MDBCol>
       <MDBCol md="9">
-        <PhoneList />
+        <PhoneGrid />
       </MDBCol>
     </MDBRow>
   </section>

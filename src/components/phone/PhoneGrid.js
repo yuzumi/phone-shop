@@ -5,12 +5,12 @@ import { selectors } from 're-ducks/modules/phones';
 import { actions } from 're-ducks/modules/cart';
 
 import Spinner from 'components/shared/Spinner';
-import PhoneListItem from 'components/phone/PhoneListItem';
+import PhoneGridItem from 'components/phone/PhoneGridItem';
 
-const PhoneList = ({ items, isLoading, addToCart }) => {
+const PhoneGrid = ({ items, isLoading, addToCart }) => {
   const renderPhoneItem = phone => (
     <MDBCol className="pt-3" lg="4" md="6" sm="12" key={phone.id}>
-      <PhoneListItem 
+      <PhoneGridItem 
         {...{
           phone,
           addToCart: () => addToCart(phone),
@@ -39,4 +39,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { addToCart: actions.addToCart }
-)(PhoneList);
+)(PhoneGrid);
