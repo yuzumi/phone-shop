@@ -1,12 +1,13 @@
 import actions from 're-ducks/modules/phones/actions';
+import phonesService from 'services/phones';
 
 const fetchPhones = () => dispatch => {
   dispatch(actions.fetchPhonesRequest());
 
-  fetch('http://localhost:3000/data.json')
-    .then(response => response.json())
-    .then(data => {
-      dispatch(actions.fetchPhonesSuccess(data));
+  phonesService
+    .getAll()
+    .then(response => {
+      dispatch(actions.fetchPhonesSuccess(response.data));
     })
     .catch(error => {
       dispatch(actions.fetchPhonesFailure(error));
