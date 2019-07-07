@@ -2,12 +2,13 @@ import React from 'react';
 import { MDBRow, MDBCol } from "mdbreact";
 import PhoneListItem from 'components/phone/PhoneListItem';
 
-const PhoneList = ({ items, addToCart, removeFromCart }) => {
+const PhoneList = ({ items, isInCart, addToCart, removeFromCart }) => {
   const renderPhoneItem = phone => (
     <MDBCol className="pt-3" sm="12" key={phone.id}>
       <PhoneListItem
         {...{
           phone,
+          inCart: isInCart(phone),
           addToCart: () => addToCart(phone),
           removeFromCart: () => removeFromCart(phone.id),
         }}

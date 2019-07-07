@@ -3,12 +3,13 @@ import { MDBRow, MDBCol } from "mdbreact";
 
 import PhoneGridItem from 'components/phone/PhoneGridItem';
 
-const PhoneGrid = ({ items, addToCart, removeFromCart }) => {
+const PhoneGrid = ({ items, isInCart, addToCart, removeFromCart }) => {
   const renderPhoneItem = phone => (
-    <MDBCol className="pt-3" lg="4" md="6" sm="12" key={phone.id}>
+    <MDBCol className="pt-3" lg="3" md="4" sm="6" xs="12" key={phone.id}>
       <PhoneGridItem
         {...{
           phone,
+          inCart: isInCart(phone),
           addToCart: () => addToCart(phone),
           removeFromCart: () => removeFromCart(phone.id),
         }}
