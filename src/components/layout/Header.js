@@ -3,28 +3,19 @@ import { Link } from 'react-router-dom';
 import {
   MDBContainer,
   MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavItem,
-  MDBNavLink,
-  MDBIcon
+  MDBNavbarBrand
 } from "mdbreact";
+import CartCount from 'components/cart/CartCount';
 import { string } from 'prop-types';
 
 const Header = ({ appName }) => (
   <header className="header">
     <MDBNavbar color="default-color" dark>
       <MDBContainer fluid>
-        <MDBNavbarBrand>
+        <MDBNavbarBrand className="mr-auto">
           <Link className="white-text" to="/">{appName}</Link>
         </MDBNavbarBrand>
-        <MDBNavbarNav className="flex-row" right>
-          <MDBNavItem>
-            <MDBNavLink className="waves-effect waves-light" to="/shopping-cart">
-              <MDBIcon icon="shopping-cart" />
-            </MDBNavLink>
-          </MDBNavItem>
-        </MDBNavbarNav>
+        <CartCount />
       </MDBContainer>
     </MDBNavbar>
   </header>
