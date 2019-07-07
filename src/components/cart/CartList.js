@@ -1,21 +1,33 @@
 import React from 'react';
 import CartListItem from 'components/cart/CartListItem';
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 
 const CartList = ({ items, removeFromCart }) => {
   const renderCartItem = item => (
-    <div className="pb-3" key={item.id}>
-      <CartListItem 
-        {...{
-          item,
-          removeFromCart: () => removeFromCart(item.id)
-        }}
-      />
-    </div>
+    <CSSTransition 
+      key={item.id}
+      timeout={500}
+      classNames="item"  
+    >
+      <div className="pb-3">
+        <CartListItem
+          {...{
+            item,
+            removeFromCart: () => removeFromCart(item.id)
+          }}
+        />
+      </div>
+    </CSSTransition>
   );
 
   return (
     <div className="cart-list">
-      {items.map(renderCartItem)}
+      <TransitionGroup>
+        {items.map(renderCartItem)}
+      </TransitionGroup>
     </div>
   );
 };
