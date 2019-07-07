@@ -4,6 +4,7 @@ import Spinner from 'components/shared/Spinner';
 import { connect } from 'react-redux';
 import { selectors as phonesSelectors } from 're-ducks/modules/phones';
 import { selectors as viewSelectors } from 're-ducks/modules/view';
+import { selectors as cartSelectors } from 're-ducks/modules/cart';
 import { actions } from 're-ducks/modules/cart';
 
 import PhoneView from 'components/phone/PhoneView';
@@ -21,8 +22,7 @@ const HomePage = ({ isLoading, ...restProps }) => (
             </MDBCol>
           </MDBRow>
           <MDBRow>
-            <MDBCol md="3"></MDBCol>
-            <MDBCol md="9">
+            <MDBCol>
               <PhoneView {...restProps} />
             </MDBCol>
           </MDBRow>
@@ -34,6 +34,7 @@ const HomePage = ({ isLoading, ...restProps }) => (
 const mapStateToProps = state => ({
   ...phonesSelectors.selectPhones(state),
   view: viewSelectors.selectView(state),
+  isInCart: cartSelectors.isInCart(state),
 });
 
 export default connect(
