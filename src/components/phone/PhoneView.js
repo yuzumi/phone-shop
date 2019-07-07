@@ -4,15 +4,15 @@ import { constants } from 're-ducks/modules/view';
 import PhoneGrid from 'components/phone/PhoneGrid';
 import PhoneList from 'components/phone/PhoneList';
 
-const PhoneView = ({ view, items, addToCart, removeFromCart }) => {
+const PhoneView = ({ view, ...restProps }) => {
   const chooseView = () => {
     switch (view) {
       case constants.GRID:
-        return <PhoneGrid {...{items, addToCart, removeFromCart}} />;
+        return <PhoneGrid {...restProps} />;
       case constants.LIST:
-        return <PhoneList {...{items, addToCart, removeFromCart}} />;
+        return <PhoneList {...restProps} />;
       default:
-        return <PhoneGrid {...{items, addToCart, removeFromCart}} />;
+        return <PhoneGrid {...restProps} />;
     }
   };
 
