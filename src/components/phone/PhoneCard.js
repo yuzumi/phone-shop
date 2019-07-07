@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { MDBRow, MDBCol, MDBBtn } from 'mdbreact';
 import Image from 'components/shared/Image';
 
-const PhoneCard = ({ phone, addToCart }) => (
+const PhoneCard = ({ phone, inCart, addToCart, removeFromCart }) => (
   <div className="phone-card">
     <MDBRow>
       <MDBCol lg="4" md="6" sm="12">
@@ -17,7 +18,14 @@ const PhoneCard = ({ phone, addToCart }) => (
         <p className="text-muted">
           Company: <span className="text-primary">{phone.company}</span>
         </p>
-        <MDBBtn className="mx-0" size="sm" onClick={addToCart}>Add to cart</MDBBtn>
+        {inCart ? (
+          <>
+            <MDBBtn className="mx-0" color="danger" size="sm" onClick={removeFromCart}>Remove from cart</MDBBtn>
+            <Link className="btn btn-primary btn-sm" to="/shopping-cart">Go to cart</Link>
+          </>
+        ) : (
+          <MDBBtn className="mx-0" size="sm" onClick={addToCart}>Add to cart</MDBBtn>
+        )}
       </MDBCol>
     </MDBRow>
   </div>
