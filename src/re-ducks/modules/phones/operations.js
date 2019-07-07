@@ -1,5 +1,6 @@
 import actions from 're-ducks/modules/phones/actions';
 import phonesService from 'services/phones';
+import { wait } from 'helpers';
 
 const fetchPhones = () => dispatch => {
   dispatch(actions.fetchPhonesRequest());
@@ -7,7 +8,10 @@ const fetchPhones = () => dispatch => {
   phonesService
     .getAll()
     .then(response => {
-      dispatch(actions.fetchPhonesSuccess(response.data));
+      wait(1000)
+        .then(() => {
+          dispatch(actions.fetchPhonesSuccess(response.data));
+        });
     })
     .catch(error => {
       dispatch(actions.fetchPhonesFailure(error));
