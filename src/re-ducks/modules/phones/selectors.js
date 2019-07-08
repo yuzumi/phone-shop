@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { parseDecimal } from 'helpers';
 
 const selectPhones = state => (
   state && 
@@ -13,7 +14,7 @@ const selectItems = createSelector(
 );
 
 const selectPhone = (state, props) => 
-  selectItems(state).find(item => item.id === parseInt(props.match.params.id, 10));
+  selectItems(state).find(item => item.id === parseDecimal(props.match.params.id));
 
 const selectCompanies = createSelector(
   selectItems,
