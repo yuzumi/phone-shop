@@ -7,9 +7,9 @@ import PhoneList from 'components/phone/PhoneList';
 const PhoneView = ({ view, ...restProps }) => {
   const chooseView = () => {
     switch (view) {
-      case constants.GRID:
+      case constants.VIEWS.GRID:
         return <PhoneGrid {...restProps} />;
-      case constants.LIST:
+      case constants.VIEWS.LIST:
         return <PhoneList {...restProps} />;
       default:
         return <PhoneGrid {...restProps} />;
