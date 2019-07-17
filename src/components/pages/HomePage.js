@@ -33,6 +33,7 @@ const HomePage = ({ isLoading, ...restProps }) => (
 
 const mapStateToProps = state => ({
   ...phonesSelectors.selectPhones(state),
+  items: phonesSelectors.selectSortedPhones(state),
   view: viewSelectors.selectView(state),
   isInCart: cartSelectors.isInCart(state),
 });
