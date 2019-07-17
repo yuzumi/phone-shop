@@ -1,5 +1,10 @@
 import { createSelector } from 'reselect';
 import { parseDecimal } from 'helpers';
+import { constants, selectors } from 're-ducks/modules/sorting';
+import { compare, compareNumbers } from 'helpers';
+
+const { selectSorting } = selectors;
+const { PARAMS } = constants;
 
 const selectPhones = state => (
   state && 
@@ -38,11 +43,35 @@ const selectPriceRange = createSelector(
   }
 );
 
+const selectSortedPhones = createSelector(
+  selectItems,
+  selectSorting,
+  (phones, { param, isAsc }) => {
+    let sortedPhones = [];
+
+    switch (param) {
+      case PARAMS.TITLE:
+        sortedPhones = phones.slice().sort((a, b) => compare(a['title'], b['title']));
+        break;
+      case PARAMS.PRICE:
+        sortedPhones = phones.slice().sort((a, b) => compareNumbers(a['price'], b['price']));
+        break;
+      default:
+        sortedPhones = phones.slice();
+    }
+
+    return isAsc
+      ? sortedPhones
+      : sortedPhones.reverse();
+  }
+);
+
 export default {
   selectPhone,
   selectPhones,
   selectItems,
   selectCompanies,
   selectPrices,
-  selectPriceRange
+  selectPriceRange,
+  selectSortedPhones
 };
